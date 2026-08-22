@@ -1,0 +1,4 @@
+import './style.css'
+import 'flowbite'
+import '@fortawesome/fontawesome-free/css/all.min.css'
+import './assets/js/header-scroll'

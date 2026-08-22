@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@plugin "flowbite/plugin";
+
+@source "../node_modules/flowbite";
+
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #0b3168;
+  --color-primary-600: #092957;
+  --color-primary-700: #072246;
+  --color-primary-800: #051a35;
+  --color-primary-900: #031223;
+}
+
+
+html {
+  font-family: "Sora", sans-serif;
+}
