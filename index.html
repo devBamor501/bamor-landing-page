@@ -222,145 +222,252 @@
     </div>
   </section>
 
-  <!-- -->
-<section class="py-16 relative w-full max-w-full px-4 sm:px-8 md:px-12 lg:px-16 z-10 min-h-screen flex flex-col justify-center overflow-hidden font-sans bg-[#FAF8F5]/40">
-  
-  <!-- Marca de agua Ubicación -->
-  <div class="absolute left-6 top-24 pointer-events-none opacity-20 hidden lg:block">
-    <svg class="w-16 h-16 text-[#E86624]" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-    </svg>
-  </div>
+  <!-- Como funciona -->
+  <section id="como-funciona"
+    class="relative w-full max-w-full px-4 py-16 sm:px-8 md:px-12 lg:px-16 z-10 overflow-hidden bg-[#FAF3EA]">
 
-  <!-- Header -->
-  <div class="text-center mb-16 relative z-10 w-full max-w-4xl mx-auto">
-    <h2 class="text-[36px] md:text-[48px] font-bold text-[#2C2C2C] mb-2 tracking-tight">
-      ¿Cómo funciona <span class="text-[#E86624]">BAMOR?</span>
-    </h2>
-    <p class="text-[16px] md:text-[18px] text-[#666666] font-medium">
-      Un proceso <span class="text-[#E86624]">simple</span>, <span class="text-[#E86624]">transparente</span> y pensado para ti.
-    </p>
-    <div class="w-12 h-[3px] bg-[#E86624] mx-auto mt-4 rounded-full"></div>
-  </div>
+    <!-- Titulo -->
+    <div class="text-center mb-16 relative z-10 w-full max-w-4xl mx-auto">
+      <h2 class="text-[36px] md:text-[48px] font-bold text-[#2C2C2C] mb-2 tracking-tight">
+        ¿Cómo funciona <span class="text-amber-600">BAMOR?</span>
+      </h2>
+      <p class="text-[16px] md:text-[18px] text-[#666666] font-medium">
+        Un proceso <span class="text-amber-600">simple</span>, <span class="text-amber-600">transparente</span> y
+        pensado para ti.
+      </p>
+      <div class="w-12 h-0.75 bg-amber-600 mx-auto mt-4 rounded-full"></div>
+    </div>
 
-  <!-- Path Container -->
-  <div class="relative w-full max-w-[1400px] mx-auto min-h-[550px] flex items-center justify-center">
-    
-    <!-- SVG Path recortado para no tocar la casa -->
-    <svg class="absolute inset-0 w-full h-full pointer-events-none hidden lg:block z-0" viewBox="0 0 1400 240" fill="none" preserveAspectRatio="none">
-      <path id="route-path"
-            d="M 60 120 C 160 120, 200 50, 300 50 C 400 50, 460 170, 560 170 C 660 170, 720 90, 820 90 C 900 90, 960 140, 1020 140" 
-            stroke="#E86624" stroke-width="12" stroke-linecap="round"/>
-      <path d="M 60 120 C 160 120, 200 50, 300 50 C 400 50, 460 170, 560 170 C 660 170, 720 90, 820 90 C 900 90, 960 140, 1020 140" 
-            stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="8 6" stroke-linecap="round"/>
-    </svg>
+    <!-- Path Container -->
+    <div id="path-container" class="relative w-full max-w-325 mx-auto lg:h-122.5">
 
-    <!-- Camioneta BAMOR montada exactamente sobre la línea -->
-    <div id="bamor-van" class="absolute z-40 transition-all duration-700 ease-in-out -translate-x-1/2 -translate-y-[50%] hidden lg:flex flex-col items-center pointer-events-none" style="left: 60px; top: 120px;">
-      <div class="bg-[#E86624] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-md mb-1 whitespace-nowrap animate-bounce">
-        BAMOR
-      </div>
-      <div class="w-10 h-10 bg-white p-1.5 rounded-full shadow-lg border-2 border-[#E86624] flex items-center justify-center">
-        <svg class="w-6 h-6 text-[#E86624]" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M19 7h-3V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM7 16.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm10 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 11h-2.5V8.5H17l1 2.5z"/>
+      <!-- SVG Path -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none hidden lg:block z-0" viewBox="0 0 1000 700"
+        fill="none" preserveAspectRatio="none">
+        <path id="route-path"
+          d="M 40 80 C 140 80, 140 260, 180 260 C 260 260, 300 280, 340 280 C 420 280, 500 140, 580 140 C 660 140, 700 300, 740 300"
+          stroke="#E86624" stroke-width="10" stroke-linecap="round" />
+        <path
+          d="M 40 80 C 140 80, 140 260, 180 260 C 260 260, 300 280, 340 280 C 420 280, 500 140, 580 140 C 660 140, 700 300, 740 300"
+          stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="8 6" stroke-linecap="round" />
+      </svg>
+
+      <!-- Camioncito BAMOR -->
+      <div id="bamor-van"
+        class="absolute z-30 hidden h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-amber-600 bg-white shadow-lg lg:flex pointer-events-none"
+        style="left: 40px; top: 80px;">
+        <svg class="h-6 w-6 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M19 7h-3V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM7 16.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm10 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 11h-2.5V8.5H17l1 2.5z" />
         </svg>
       </div>
+
+      <!-- Imagen Casa (Extremo Derecho) -->
+      <div class="absolute right-0 top-0 bottom-0 w-70 xl:w-[320px] z-0 hidden lg:block pointer-events-none">
+        <div
+          class="h-full w-full overflow-hidden [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_60%)] mask-[linear-gradient(to_right,transparent_0%,black_60%)]">
+          <img src="/img/img-function.png" alt="Casa Bamor"
+            class="w-full h-full object-cover object-[60%_30%]" />
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div class="relative z-10 flex flex-col gap-10 lg:block lg:gap-0">
+
+        <!-- Step 1 -->
+        <div
+          class="step-item mx-auto flex w-full max-w-55 flex-col items-center text-center lg:absolute lg:mx-0 lg:w-55 lg:-translate-x-1/2"
+          data-step="0" data-fraction="0">
+          <div
+            class="step-icon relative z-20 mb-4 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-[3px] border-[#E86624] bg-white shadow-md">
+            <svg class="h-7 w-7 text-[#E86624]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+            </svg>
+            <div
+              class="absolute -bottom-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-[#E86624] text-[12px] font-bold text-white shadow">
+              1</div>
+          </div>
+          <div
+            class="step-card w-full min-h-[150px] rounded-2xl border border-transparent bg-transparent p-4 transition-all duration-500">
+            <h3 class="mb-2 text-[15px] font-bold leading-tight text-[#2C2C2C]">Selecciona<br />tus servicios</h3>
+            <div class="step-line mx-auto mb-3 h-[2px] w-8 bg-[#E86624] opacity-0 transition-opacity duration-500">
+            </div>
+            <p class="step-text text-[12px] leading-relaxed text-[#666666] opacity-0 transition-opacity duration-500">
+              Cuéntanos qué necesitas.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div
+          class="step-item mx-auto flex w-full max-w-[220px] flex-col items-center text-center lg:absolute lg:mx-0 lg:w-[220px] lg:-translate-x-1/2"
+          data-step="1" data-fraction="0.27">
+          <div
+            class="step-icon relative z-20 mb-4 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-[3px] border-[#E86624] bg-white shadow-md">
+            <svg class="h-7 w-7 text-[#E86624]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <circle cx="15" cy="15" r="2.5" fill="#E86624" />
+            </svg>
+            <div
+              class="absolute -bottom-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-[#E86624] text-[12px] font-bold text-white shadow">
+              2</div>
+          </div>
+          <div
+            class="step-card w-full min-h-[150px] rounded-2xl border border-transparent bg-transparent p-4 transition-all duration-500">
+            <h3 class="mb-2 text-[15px] font-bold leading-tight text-[#2C2C2C]">Recibe tu<br />cotización</h3>
+            <div class="step-line mx-auto mb-3 h-[2px] w-8 bg-[#E86624] opacity-0 transition-opacity duration-500">
+            </div>
+            <p class="step-text text-[12px] leading-relaxed text-[#666666] opacity-0 transition-opacity duration-500">
+              Conoce el alcance del servicio y el tiempo estimado antes de comenzar.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div
+          class="step-item mx-auto flex w-full max-w-[220px] flex-col items-center text-center lg:absolute lg:mx-0 lg:w-[220px] lg:-translate-x-1/2"
+          data-step="2" data-fraction="0.51">
+          <div
+            class="step-icon relative z-20 mb-4 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-[3px] border-[#E86624] bg-white shadow-md">
+            <svg class="h-7 w-7 text-[#E86624]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="16" rx="2" stroke-width="1.6" />
+              <path stroke-linecap="round" stroke-width="1.6" d="M16 2v4M8 2v4M3 10h18" />
+              <circle cx="16" cy="15" r="2" stroke-width="1.4" />
+            </svg>
+            <div
+              class="absolute -bottom-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-[#E86624] text-[12px] font-bold text-white shadow">
+              3</div>
+          </div>
+          <div
+            class="step-card w-full min-h-[150px] rounded-2xl border border-transparent bg-transparent p-4 transition-all duration-500">
+            <h3 class="mb-2 text-[15px] font-bold leading-tight text-[#2C2C2C]">Agenda<br />tu visita</h3>
+            <div class="step-line mx-auto mb-3 h-[2px] w-8 bg-[#E86624] opacity-0 transition-opacity duration-500">
+            </div>
+            <p class="step-text text-[12px] leading-relaxed text-[#666666] opacity-0 transition-opacity duration-500">
+              Elige la fecha y hora que mejor se adapten a tu agenda.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div
+          class="step-item mx-auto flex w-full max-w-[220px] flex-col items-center text-center lg:absolute lg:mx-0 lg:w-[220px] lg:-translate-x-1/2"
+          data-step="3" data-fraction="0.745">
+          <div
+            class="step-icon relative z-20 mb-4 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-[3px] border-[#E86624] bg-white shadow-md">
+            <svg class="h-7 w-7 text-[#E86624]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              <path stroke-linecap="round" stroke-width="1.5" d="M14 14l3 3m0 0l2-2m-2 2l-1.5-1.5" />
+            </svg>
+            <div
+              class="absolute -bottom-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-[#E86624] text-[12px] font-bold text-white shadow">
+              4</div>
+          </div>
+          <div
+            class="step-card w-full min-h-[150px] rounded-2xl border border-transparent bg-transparent p-4 transition-all duration-500">
+            <h3 class="mb-2 text-[15px] font-bold leading-tight text-[#2C2C2C]">Realizamos el servicio<br />con <span
+                class="text-[#E86624]">Pago Justo®</span></h3>
+            <div class="step-line mx-auto mb-3 h-[2px] w-8 bg-[#E86624] opacity-0 transition-opacity duration-500">
+            </div>
+            <p class="step-text text-[11px] leading-relaxed text-[#666666] opacity-0 transition-opacity duration-500">
+              Nuestros técnicos pueden resolver varios pendientes en una sola visita. Al finalizar, pagas únicamente por
+              el tiempo dedicado al servicio.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div
+          class="step-item mx-auto flex w-full max-w-[220px] flex-col items-center text-center lg:absolute lg:mx-0 lg:w-[220px] lg:-translate-x-1/2"
+          data-step="4" data-fraction="1">
+          <div
+            class="step-icon relative z-20 mb-4 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-[3px] border-[#E86624] bg-white shadow-md">
+            <svg class="h-7 w-7 text-[#E86624]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+                d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h14a1 1 0 001-1V10" />
+              <path d="M12 13c-1.5-1.5-3-1-3 0 0 1.5 3 3 3 3s3-1.5 3-3c0-1-1.5-1.5-3 0z" fill="#E86624" />
+            </svg>
+            <div
+              class="absolute -bottom-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-[#E86624] text-[12px] font-bold text-white shadow">
+              5</div>
+          </div>
+          <div
+            class="step-card w-full min-h-[150px] rounded-2xl border border-transparent bg-transparent p-4 transition-all duration-500">
+            <h3 class="mb-2 text-[15px] font-bold leading-tight text-[#2C2C2C]">Disfruta<br />tus espacios</h3>
+            <div class="step-line mx-auto mb-3 h-[2px] w-8 bg-[#E86624] opacity-0 transition-opacity duration-500">
+            </div>
+            <p class="step-text text-[12px] leading-relaxed text-[#666666] opacity-0 transition-opacity duration-500">
+              Nosotros nos encargamos del mantenimiento para que tú disfrutes lo que realmente importa.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- Imagen Casa (Extremo Derecho) -->
-    <div class="absolute right-0 top-[-20px] bottom-[-20px] w-[340px] xl:w-[400px] z-0 hidden lg:block pointer-events-none overflow-hidden [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_30%)]">
-      <img src="/img/img-function.png" alt="Casa Bamor" class="w-full h-full object-cover object-[70%_center] scale-[1.05]" />
+    <!-- Features Strip -->
+    <div
+      class="relative z-10 mx-auto mt-16 w-full max-w-[1200px] rounded-2xl border border-[#EFE6DA] bg-white px-6 py-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)] sm:px-10">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:divide-x lg:divide-[#EFE6DA]">
+        <!-- Pago Justo -->
+        <div class="flex items-center gap-3 lg:pr-6">
+          <div
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#E86624] text-[#E86624]">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 3 19 6v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 11.5 11 13.5 15 9" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-[#2C2C2C]">Pago Justo<sup>®</sup></p>
+            <p class="text-xs leading-snug text-[#666666]">Pagas únicamente por el tiempo efectivo trabajado.</p>
+          </div>
+        </div>
+        <!-- Técnicos capacitados -->
+        <div class="flex items-center gap-3 lg:px-6">
+          <div
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#E86624] text-[#E86624]">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-[#2C2C2C]">Técnicos capacitados</p>
+            <p class="text-xs leading-snug text-[#666666]">Profesionales confiables y verificados.</p>
+          </div>
+        </div>
+        <!-- Comunicación constante -->
+        <div class="flex items-center gap-3 lg:px-6">
+          <div
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#E86624] text-[#E86624]">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-[#2C2C2C]">Comunicación constante</p>
+            <p class="text-xs leading-snug text-[#666666]">Te acompañamos en cada paso del proceso.</p>
+          </div>
+        </div>
+        <!-- Garantía BAMOR -->
+        <div class="flex items-center gap-3 lg:pl-6">
+          <div
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#E86624] text-[#E86624]">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.5 6.5 21 12 18l5.5 3L15 12.5" />
+              <circle cx="12" cy="8" r="5" stroke-width="1.8" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="m9.7 8 1.5 1.5L14.3 6.5" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-[#2C2C2C]">Garantía BAMOR</p>
+            <p class="text-xs leading-snug text-[#666666]">Respaldamos nuestro trabajo para tu tranquilidad.</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Steps Grid (Tarjetas con tamaño uniforme) -->
-    <div class="w-full h-full relative z-10 flex flex-col lg:block gap-8 px-4">
-      
-      <!-- Step 1 -->
-      <div class="step-item relative lg:absolute lg:-translate-x-1/2 cursor-pointer group" style="left: 4.5%; top: 12%;" data-step="0">
-        <div class="step-card bg-transparent rounded-[32px] p-6 border border-transparent transition-all duration-500 w-[240px] min-h-[360px] flex flex-col items-center justify-start text-center">
-          <div class="relative w-20 h-20 bg-white rounded-full border-[3px] border-[#E86624] shadow-md flex items-center justify-center mb-4 shrink-0">
-            <svg class="w-9 h-9 text-[#2C2C2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-            <div class="absolute -bottom-2 w-6 h-6 bg-[#E86624] text-white text-[12px] font-bold rounded-full flex items-center justify-center border-2 border-white shadow">1</div>
-          </div>
-          <h3 class="font-bold text-[#2C2C2C] mb-2 leading-tight text-[15px]">Selecciona<br/>tus servicios</h3>
-          <div class="step-line w-8 h-[2px] bg-[#E86624] mb-3 transition-opacity duration-300 opacity-0"></div>
-          <p class="step-info text-[12px] text-[#666666] leading-relaxed transition-all duration-300 opacity-0 group-[.active]:opacity-100">Cuéntanos qué necesitas.</p>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="step-item relative lg:absolute lg:-translate-x-1/2 cursor-pointer group" style="left: 21.5%; top: 2%;" data-step="1">
-        <div class="step-card bg-transparent rounded-[32px] p-6 border border-transparent transition-all duration-500 w-[240px] min-h-[360px] flex flex-col items-center justify-start text-center">
-          <div class="relative w-20 h-20 bg-white rounded-full border-[3px] border-[#E86624] shadow-md flex items-center justify-center mb-4 shrink-0">
-            <svg class="w-9 h-9 text-[#2C2C2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-              <circle cx="15" cy="15" r="2.5" fill="#E86624" class="text-white" />
-            </svg>
-            <div class="absolute -bottom-2 w-6 h-6 bg-[#E86624] text-white text-[12px] font-bold rounded-full flex items-center justify-center border-2 border-white shadow">2</div>
-          </div>
-          <h3 class="font-bold text-[#2C2C2C] mb-2 leading-tight text-[15px]">Recibe tu<br/>cotización</h3>
-          <div class="step-line w-8 h-[2px] bg-[#E86624] mb-3 transition-opacity duration-300 opacity-0"></div>
-          <p class="step-info text-[12px] text-[#666666] leading-relaxed transition-all duration-300 opacity-0 group-[.active]:opacity-100">Conoce el alcance del servicio y el tiempo estimado antes de comenzar.</p>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step-item relative lg:absolute lg:-translate-x-1/2 cursor-pointer group" style="left: 40%; top: 28%;" data-step="2">
-        <div class="step-card bg-transparent rounded-[32px] p-6 border border-transparent transition-all duration-500 w-[240px] min-h-[360px] flex flex-col items-center justify-start text-center">
-          <div class="relative w-20 h-20 bg-white rounded-full border-[3px] border-[#E86624] shadow-md flex items-center justify-center mb-4 shrink-0">
-            <svg class="w-9 h-9 text-[#2C2C2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <rect x="3" y="4" width="18" height="16" rx="2" stroke-width="1.6"/>
-              <path stroke-linecap="round" stroke-width="1.6" d="M16 2v4M8 2v4M3 10h18"/>
-              <circle cx="16" cy="15" r="2" stroke-width="1.4" stroke="#E86624"/>
-            </svg>
-            <div class="absolute -bottom-2 w-6 h-6 bg-[#E86624] text-white text-[12px] font-bold rounded-full flex items-center justify-center border-2 border-white shadow">3</div>
-          </div>
-          <h3 class="font-bold text-[#2C2C2C] mb-2 leading-tight text-[15px]">Agenda<br/>tu visita</h3>
-          <div class="step-line w-8 h-[2px] bg-[#E86624] mb-3 transition-opacity duration-300 opacity-0"></div>
-          <p class="step-info text-[12px] text-[#666666] leading-relaxed transition-all duration-300 opacity-0 group-[.active]:opacity-100">Elige la fecha y hora que mejor se adapten a tu agenda.</p>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="step-item relative lg:absolute lg:-translate-x-1/2 cursor-pointer group" style="left: 58.5%; top: 10%;" data-step="3">
-        <div class="step-card bg-transparent rounded-[32px] p-6 border border-transparent transition-all duration-500 w-[240px] min-h-[360px] flex flex-col items-center justify-start text-center">
-          <div class="relative w-20 h-20 bg-white rounded-full border-[3px] border-[#E86624] shadow-md flex items-center justify-center mb-4 shrink-0">
-            <svg class="w-10 h-10 text-[#2C2C2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-              <path stroke-linecap="round" stroke-width="1.5" d="M14 14l3 3m0 0l2-2m-2 2l-1.5-1.5" stroke="#E86624"/>
-            </svg>
-            <div class="absolute -bottom-2 w-6 h-6 bg-[#E86624] text-white text-[12px] font-bold rounded-full flex items-center justify-center border-2 border-white shadow">4</div>
-          </div>
-          <h3 class="font-bold text-[#2C2C2C] mb-2 leading-tight text-[15px]">Realizamos el servicio<br/>con <span class="text-[#E86624]">Pago Justo®</span></h3>
-          <div class="step-line w-8 h-[2px] bg-[#E86624] mb-3 transition-opacity duration-300 opacity-0"></div>
-          <div class="step-info transition-all duration-300 opacity-0 group-[.active]:opacity-100">
-            <p class="text-[11px] text-[#666666] leading-relaxed mb-1">Nuestros técnicos pueden resolver varios pendientes en una sola visita.</p>
-            <p class="text-[11px] text-[#666666] leading-relaxed">Al finalizar, revisamos contigo el tiempo efectivo trabajado para que pagues únicamente por el tiempo dedicado al servicio.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 5 -->
-      <div class="step-item relative lg:absolute lg:-translate-x-1/2 cursor-pointer group" style="left: 73%; top: 22%;" data-step="4">
-        <div class="step-card bg-transparent rounded-[32px] p-6 border border-transparent transition-all duration-500 w-[240px] min-h-[360px] flex flex-col items-center justify-start text-center">
-          <div class="relative w-20 h-20 bg-white rounded-full border-[3px] border-[#E86624] shadow-md flex items-center justify-center mb-4 shrink-0">
-            <svg class="w-9 h-9 text-[#2C2C2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h14a1 1 0 001-1V10"/>
-              <path d="M12 13c-1.5-1.5-3-1-3 0 0 1.5 3 3 3 3s3-1.5 3-3c0-1-1.5-1.5-3 0z" fill="#E86624" stroke="#E86624"/>
-            </svg>
-            <div class="absolute -bottom-2 w-6 h-6 bg-[#E86624] text-white text-[12px] font-bold rounded-full flex items-center justify-center border-2 border-white shadow">5</div>
-          </div>
-          <h3 class="font-bold text-[#2C2C2C] mb-2 leading-tight text-[15px]">Disfruta<br/>tus espacios</h3>
-          <div class="step-line w-8 h-[2px] bg-[#E86624] mb-3 transition-opacity duration-300 opacity-0"></div>
-          <p class="step-info text-[12px] text-[#666666] leading-relaxed transition-all duration-300 opacity-0 group-[.active]:opacity-100">Nosotros nos encargamos del mantenimiento para que tú disfrutes lo que realmente importa.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Pago Justo -->
   <section class="max-w-5xl mx-auto px-4 py-12 text-slate-800 bg-white">

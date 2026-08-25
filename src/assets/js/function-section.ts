@@ -1,109 +1,166 @@
-export interface StepPoint {
+interface PathPoint {
   x: number;
   y: number;
 }
 
-export class BamorVanTracker {
-  private vanElement: HTMLElement | null;
+interface PathMetrics {
+  scaleX: number;
+  scaleY: number;
+  offsetX: number;
+  offsetY: number;
+}
+
+class BamorRouteAnimator {
+  private container: HTMLElement | null;
+  private van: HTMLElement | null;
   private pathElement: SVGPathElement | null;
-  private stepItems: NodeListOf<HTMLElement>;
-  private stepPositions: StepPoint[] = [];
+  private steps: HTMLElement[];
+  private mediaQuery: MediaQueryList;
+  private pathLength = 0;
+  private ticking = false;
 
   constructor() {
-    this.vanElement = document.getElementById("bamor-van");
+    this.container = document.getElementById("path-container");
+    this.van = document.getElementById("bamor-van");
     this.pathElement = document.querySelector<SVGPathElement>("#route-path");
-    this.stepItems = document.querySelectorAll<HTMLElement>(".step-item");
+    this.steps = Array.from(document.querySelectorAll<HTMLElement>(".step-item"));
+    this.mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+    if (!this.container || !this.van || !this.pathElement || !this.steps.length) return;
 
     this.init();
   }
 
   private init(): void {
-    if (!this.vanElement || !this.stepItems.length) return;
+    this.layout();
+    this.update();
 
-    this.calculatePathCoordinates();
-    this.attachEventListeners();
-    
-    // Iniciar con el Paso 4 destacado por defecto
-    this.moveToStep(3);
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onResize);
+    this.mediaQuery.addEventListener("change", this.onResize);
   }
 
-  private calculatePathCoordinates(): void {
-    if (!this.pathElement) {
-      this.stepPositions = [
-        { x: 60, y: 120 },
-        { x: 300, y: 50 },
-        { x: 560, y: 170 },
-        { x: 820, y: 90 },
-        { x: 1020, y: 140 }
-      ];
+  private onScroll = (): void => {
+    if (this.ticking) return;
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      this.update();
+      this.ticking = false;
+    });
+  };
+
+  private onResize = (): void => {
+    this.layout();
+    this.update();
+  };
+
+  private layout(): void {
+    if (!this.pathElement || !this.container) return;
+
+    if (!this.mediaQuery.matches) {
+      this.steps.forEach((step) => {
+        step.style.removeProperty("left");
+        step.style.removeProperty("top");
+      });
       return;
     }
 
-    const totalLength = this.pathElement.getTotalLength();
-    const fractions = [0.0, 0.24, 0.52, 0.78, 1.0];
+    this.pathLength = this.pathElement.getTotalLength();
+    const metrics = this.getMetrics();
+    if (!metrics) return;
 
-    this.stepPositions = fractions.map((fraction) => {
-      const point = this.pathElement!.getPointAtLength(totalLength * fraction);
-      return { x: point.x, y: point.y };
+    this.steps.forEach((step) => {
+      const fraction = parseFloat(step.dataset.fraction ?? "0");
+      const point = this.pointAt(fraction, metrics);
+      const icon = step.querySelector<HTMLElement>(".step-icon");
+      const iconRadius = icon ? icon.offsetWidth / 2 : 32;
+
+      step.style.left = `${point.x}px`;
+      step.style.top = `${point.y - iconRadius}px`;
     });
   }
 
-  public moveToStep(stepIndex: number): void {
-    if (!this.vanElement || stepIndex < 0 || stepIndex >= this.stepPositions.length) return;
+  private getMetrics(): PathMetrics | null {
+    if (!this.pathElement || !this.container) return null;
+    const svg = this.pathElement.ownerSVGElement;
+    if (!svg) return null;
 
-    const targetCoord = this.stepPositions[stepIndex];
+    const svgRect = svg.getBoundingClientRect();
+    const containerRect = this.container.getBoundingClientRect();
+    const viewBox = svg.viewBox.baseVal;
 
-    this.vanElement.style.left = `${targetCoord.x}px`;
-    this.vanElement.style.top = `${targetCoord.y}px`;
+    return {
+      scaleX: svgRect.width / viewBox.width,
+      scaleY: svgRect.height / viewBox.height,
+      offsetX: svgRect.left - containerRect.left,
+      offsetY: svgRect.top - containerRect.top,
+    };
+  }
 
-    this.stepItems.forEach((item, index) => {
-      const card = item.querySelector<HTMLElement>(".step-card");
-      const line = item.querySelector<HTMLElement>(".step-line");
+  private pointAt(fraction: number, metrics: PathMetrics): PathPoint {
+    if (!this.pathElement) return { x: 0, y: 0 };
+    const raw = this.pathElement.getPointAtLength(this.pathLength * fraction);
+    return { x: raw.x * metrics.scaleX + metrics.offsetX, y: raw.y * metrics.scaleY + metrics.offsetY };
+  }
 
-      if (!card) return;
+  private update(): void {
+    if (!this.container || !this.van) return;
 
-      if (index === stepIndex) {
-        item.classList.add("active");
-        
-        card.classList.remove("bg-transparent", "border-transparent");
-        card.classList.add(
-          "bg-[#FAF4EE]",
-          "border-[#F3E8DB]",
-          "shadow-[0_15px_35px_rgba(0,0,0,0.07)]"
-        );
+    if (!this.mediaQuery.matches) {
+      this.van.classList.add("hidden");
+      this.steps.forEach((step) => this.reveal(step, true));
+      return;
+    }
 
-        if (line) {
-          line.classList.remove("opacity-0");
-          line.classList.add("opacity-100");
-        }
-      } else {
-        item.classList.remove("active");
-        
-        card.classList.remove(
-          "bg-[#FAF4EE]",
-          "border-[#F3E8DB]",
-          "shadow-[0_15px_35px_rgba(0,0,0,0.07)]"
-        );
-        card.classList.add("bg-transparent", "border-transparent");
+    const progress = this.scrollProgress();
+    const metrics = this.getMetrics();
+    if (!metrics) return;
 
-        if (line) {
-          line.classList.remove("opacity-100");
-          line.classList.add("opacity-0");
-        }
-      }
+    const vanPoint = this.pointAt(progress, metrics);
+    this.van.classList.remove("hidden");
+    this.van.style.left = `${vanPoint.x}px`;
+    this.van.style.top = `${vanPoint.y}px`;
+
+    this.steps.forEach((step) => {
+      const fraction = parseFloat(step.dataset.fraction ?? "0");
+      this.reveal(step, progress >= fraction - 0.015);
     });
   }
 
-  private attachEventListeners(): void {
-    this.stepItems.forEach((item, index) => {
-      item.addEventListener("click", () => this.moveToStep(index));
-      item.addEventListener("mouseenter", () => this.moveToStep(index));
-    });
+  private reveal(step: HTMLElement, isRevealed: boolean): void {
+    const card = step.querySelector<HTMLElement>(".step-card");
+    const line = step.querySelector<HTMLElement>(".step-line");
+    const text = step.querySelector<HTMLElement>(".step-text");
+    if (!card) return;
 
-    window.addEventListener("resize", () => this.calculatePathCoordinates());
+    if (isRevealed) {
+      step.classList.add("active");
+      card.classList.remove("bg-transparent", "border-transparent");
+      card.classList.add("bg-white", "border-[#F3E8DB]", "shadow-[0_15px_35px_rgba(0,0,0,0.07)]");
+      line?.classList.remove("opacity-0");
+      line?.classList.add("opacity-100");
+      text?.classList.remove("opacity-0");
+      text?.classList.add("opacity-100");
+    } else {
+      step.classList.remove("active");
+      card.classList.add("bg-transparent", "border-transparent");
+      card.classList.remove("bg-white", "border-[#F3E8DB]", "shadow-[0_15px_35px_rgba(0,0,0,0.07)]");
+      line?.classList.add("opacity-0");
+      line?.classList.remove("opacity-100");
+      text?.classList.add("opacity-0");
+      text?.classList.remove("opacity-100");
+    }
+  }
+
+  private scrollProgress(): number {
+    if (!this.container) return 0;
+    const rect = this.container.getBoundingClientRect();
+    const anchor = window.innerHeight * 0.65;
+    const progress = (anchor - rect.top) / rect.height;
+    return Math.min(1, Math.max(0, progress));
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  new BamorVanTracker();
+  new BamorRouteAnimator();
 });
