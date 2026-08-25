@@ -136,7 +136,7 @@ class BamorRouteAnimator {
     if (isRevealed) {
       step.classList.add("active");
       card.classList.remove("bg-transparent", "border-transparent");
-      card.classList.add("bg-white", "border-[#F3E8DB]", "shadow-[0_15px_35px_rgba(0,0,0,0.07)]");
+      card.classList.add("bg-[#FDF1E6]", "border-[#F3E0C8]", "shadow-[0_15px_35px_rgba(0,0,0,0.07)]");
       line?.classList.remove("opacity-0");
       line?.classList.add("opacity-100");
       text?.classList.remove("opacity-0");
@@ -144,7 +144,7 @@ class BamorRouteAnimator {
     } else {
       step.classList.remove("active");
       card.classList.add("bg-transparent", "border-transparent");
-      card.classList.remove("bg-white", "border-[#F3E8DB]", "shadow-[0_15px_35px_rgba(0,0,0,0.07)]");
+      card.classList.remove("bg-[#FDF1E6]", "border-[#F3E0C8]", "shadow-[0_15px_35px_rgba(0,0,0,0.07)]");
       line?.classList.add("opacity-0");
       line?.classList.remove("opacity-100");
       text?.classList.add("opacity-0");
